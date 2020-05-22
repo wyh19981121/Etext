@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <link rel="short icon" href="Resource/icon.png">
+    <title>王永辉</title>
+
+    <style>
+        .L_form_div{
+            width: 100%;
+        }
+        .L_form_inner_div{
+            width: 90%;
+
+            margin: 0 auto;
+
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+
+            background: white;
+            height: 100px;
+        }
+        .L_form_inner_div div{
+            height: 50px;
+            border-bottom: 1px solid #cccccc;
+        }
+        .L_form_inner_div div span{
+            padding-left: 15px;
+            font-size: 20px;
+            line-height: 50px;
+        }
+        input{
+            outline: medium;
+        }
+
+        .L_external_login_div{
+            width: 100%;
+        }
+        .L_login_div{
+            width: 90%;
+            height: 50px;
+            background: rgb(36,92,161);
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .L_login_div input{
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+            height: 50px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <span>我的小滴</span>
+</header>
+
+<div style="width: 100% ;height: 200px" >
+    <img class="MD_bg_img" src="Resource/head.png" alt="">
+</div>
+
+<script>
+
+    <!--函数声明-->
+    function gainSum(a, b) {
+        var c = a + b;
+        return c;
+    }
+
+    //   函数表达式
+    var bb =function (a, b) {
+        var cc = a + b;
+        return cc;
+    }
+
+</script>
+
+<form action="">
+    <div class="L_form_div">
+        <div class="L_form_inner_div">
+            <div>
+                <span>用户名：</span>
+                <input type="text" id="L_account"><br>
+            </div>
+            <div>
+                <span>密码：</span>
+                <input type="password" id="L_pwd"><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="L_external_login_div">
+        <div class="L_login_div">
+            <input type="button" value="登录" id="L_btn" onclick="loginPress()">
+        </div>
+    </div>
+
+</form>
+
+<script>
+
+    var btn = document.querySelector("#L_btn");
+
+    btn.onclick = function ()
+    {
+        var account = encodeURIComponent(document.querySelector("#L_account").value);
+        var password = encodeURIComponent(document.querySelector("#L_pwd").value);
+        
+        var par3 = "username="+userName+"&pwd="+password;
+
+        requestMethod('post','login',par3,function (returnStr) {
+            if (returnStr =="登录成功"){
+                window.localStorage.setItem("username", username);
+
+                location.href ="DropclockService.html";
+            }else {
+                alert(returnStr);
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>
